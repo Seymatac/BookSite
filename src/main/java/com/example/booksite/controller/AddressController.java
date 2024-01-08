@@ -27,5 +27,5 @@ public class AddressController {
         return addressService.getAllAddresses();
     }
 
-    // Diğer endpoint'ler buraya eklenebilir.
+
 }

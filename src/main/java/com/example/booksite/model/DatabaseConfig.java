@@ -1,26 +1,37 @@
 package com.example.booksite.model;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-import javax.sql.DataSource;
-//spring bootta veritabanı bağlantılarını yönetmek için DataSource kullanılır.
-@Configuration
 public class DatabaseConfig {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/booksite";
-    private static final String USER = "root";
-    private static final String PASSWORD = "2772";
+   // Database Configten tek nesne oluşturma.
+    private static DatabaseConfig instance = new DatabaseConfig();
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl(URL);
-        dataSource.setUsername(USER);
-        dataSource.setPassword(PASSWORD);
-        return dataSource;
+    //Veritabanı bağlantısı Connection
+    private Connection connection;
+
+    //private tanımlandığı için sınıfın dışından doğrudan bir erişim engellendi.
+    private DatabaseConfig() {
+
+        try {
+            String url = "jdbc:mysql://localhost:3306/booksite";
+            String username = "root";
+            String password = "2772";
+            this.connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    public static DatabaseConfig getInstance() {
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }
 

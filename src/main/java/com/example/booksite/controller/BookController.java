@@ -59,7 +59,7 @@ public class BookController {
     @PostMapping("/add-to-favorites")
     public ResponseEntity<String> addToFavorites(@RequestBody Book book) {
         favoriteBookService.addToFavorites(book);
-        return ResponseEntity.ok("Book added to favorites");}
+        return ResponseEntity.ok("Kitap favorilere eklendi.");}
 
     @GetMapping("/favorite-books")
     public ResponseEntity<List<Book>> getFavoriteBooks() {

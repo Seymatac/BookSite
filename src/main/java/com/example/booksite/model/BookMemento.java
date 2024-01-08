@@ -23,21 +23,13 @@ public class BookMemento {
     public String getTitle() {
         return title;
     }
-
     public String getWriter() {
         return writer;
     }
-
     public String getCategory() {
         return category;
     }
-
-    public Double getAmout() {
-        return amout;
-
-    }
-
+    public Double getAmout() {return amout;}
     public String getGenre() {
         return genre;
-    }
-}
+    }}

@@ -5,6 +5,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CreditCardPayment implements PaymentStrategy, ShoppingCartObserver {
+    //private String cardNumber, expirationDate;
+    //private long cvc;
+    //private double amount;
+    /*public CreditCardPayment(String cn, String ed, long cvc, double amnt) {
+        this.cardNumber = cn;
+        this.expirationDate = ed;
+        this.cvc = cvc;
+        this.amount = amnt;}*/
+
     @Override
     public void update(double totalAmount) {
         processPayment(totalAmount);
